@@ -1155,7 +1155,7 @@ func (media *FeedMedia) Next(params ...interface{}) bool {
 		},
 	)
 	if err == nil {
-		m := FeedMedia{}
+		m := FeedMedia{IsTimelineMedia: media.IsTimelineMedia}
 		d := json.NewDecoder(bytes.NewReader(body))
 		d.UseNumber()
 		err = d.Decode(&m)
