@@ -80,7 +80,7 @@ func (account *Account) Sync() error {
 	body, err := insta.sendRequest(&reqOptions{
 		Endpoint: urlCurrentUser,
 		Query:    generateSignature(data),
-		IsPost:   true,
+		IsPost:   false,
 	})
 	if err == nil {
 		resp := profResp{}
