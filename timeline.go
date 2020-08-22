@@ -21,7 +21,7 @@ func newTimeline(inst *Instagram) *Timeline {
 // For pagination use FeedMedia.Next()
 func (time *Timeline) Get() *FeedMedia {
 	insta := time.inst
-	media := &FeedMedia{}
+	media := &FeedMedia{IsTimelineMedia: true}
 	media.inst = insta
 	media.endpoint = urlTimeline
 	return media
