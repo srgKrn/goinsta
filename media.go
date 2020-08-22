@@ -800,6 +800,211 @@ func (media *StoryMedia) Next(params ...interface{}) bool {
 	return false
 }
 
+type TimelineItem struct {
+	// MediaOrAd MediaOrAd `json:"media_or_ad"`
+	MediaOrAd Item `json:"media_or_ad"`
+}
+type SharingFrictionInfo struct {
+	ShouldHaveSharingFriction bool        `json:"should_have_sharing_friction"`
+	BloksAppURL               interface{} `json:"bloks_app_url"`
+}
+type CarouselMedia struct {
+	ID                    string              `json:"id"`
+	MediaType             int                 `json:"media_type"`
+	OriginalWidth         int                 `json:"original_width"`
+	OriginalHeight        int                 `json:"original_height"`
+	Pk                    int64               `json:"pk"`
+	CarouselParentID      string              `json:"carousel_parent_id"`
+	CanSeeInsightsAsBrand bool                `json:"can_see_insights_as_brand"`
+	SharingFrictionInfo   SharingFrictionInfo `json:"sharing_friction_info"`
+}
+type FriendshipStatus struct {
+	Following       bool `json:"following"`
+	OutgoingRequest bool `json:"outgoing_request"`
+	IsMutingReel    bool `json:"is_muting_reel"`
+	IsBestie        bool `json:"is_bestie"`
+	IsRestricted    bool `json:"is_restricted"`
+}
+type PreviewComments struct {
+	Pk               int64  `json:"pk"`
+	UserID           int64  `json:"user_id"`
+	Text             string `json:"text"`
+	Type             int    `json:"type"`
+	CreatedAt        int    `json:"created_at"`
+	CreatedAtUtc     int    `json:"created_at_utc"`
+	ContentType      string `json:"content_type"`
+	Status           string `json:"status"`
+	BitFlags         int    `json:"bit_flags"`
+	DidReportAsSpam  bool   `json:"did_report_as_spam"`
+	ShareEnabled     bool   `json:"share_enabled"`
+	User             User   `json:"user,omitempty"`
+	IsCovered        bool   `json:"is_covered"`
+	MediaID          int64  `json:"media_id"`
+	HasTranslation   bool   `json:"has_translation"`
+	HasLikedComment  bool   `json:"has_liked_comment"`
+	CommentLikeCount int    `json:"comment_like_count"`
+	ParentCommentID  int64  `json:"parent_comment_id,omitempty"`
+}
+type MediaOrAd struct {
+	TakenAt                        int64                 `json:"taken_at"`
+	Pk                             int64                 `json:"pk"`
+	ID                             string                `json:"id"`
+	DeviceTimestamp                int64                 `json:"device_timestamp"`
+	MediaType                      int                   `json:"media_type"`
+	Code                           string                `json:"code"`
+	ClientCacheKey                 string                `json:"client_cache_key"`
+	FilterType                     int                   `json:"filter_type"`
+	CarouselMediaCount             int                   `json:"carousel_media_count"`
+	CarouselMedia                  []CarouselMedia       `json:"carousel_media"`
+	CanSeeInsightsAsBrand          bool                  `json:"can_see_insights_as_brand"`
+	ShouldRequestAds               bool                  `json:"should_request_ads"`
+	OriginalWidth                  int                   `json:"original_width"`
+	OriginalHeight                 int                   `json:"original_height"`
+	User                           User                  `json:"user"`
+	CanViewerReshare               bool                  `json:"can_viewer_reshare"`
+	CaptionIsEdited                bool                  `json:"caption_is_edited"`
+	CommentLikesEnabled            bool                  `json:"comment_likes_enabled"`
+	CommentThreadingEnabled        bool                  `json:"comment_threading_enabled"`
+	HasMoreComments                bool                  `json:"has_more_comments"`
+	NextMaxID                      int64                 `json:"next_max_id"`
+	MaxNumVisiblePreviewComments   int                   `json:"max_num_visible_preview_comments"`
+	PreviewComments                []PreviewComments     `json:"preview_comments"`
+	CanViewMorePreviewComments     bool                  `json:"can_view_more_preview_comments"`
+	CommentCount                   int                   `json:"comment_count"`
+	InlineComposerDisplayCondition string                `json:"inline_composer_display_condition"`
+	InlineComposerImpTriggerTime   int                   `json:"inline_composer_imp_trigger_time"`
+	LikeCount                      int                   `json:"like_count"`
+	HasLiked                       bool                  `json:"has_liked"`
+	TopLikers                      []interface{}         `json:"top_likers"`
+	PhotoOfYou                     bool                  `json:"photo_of_you"`
+	Caption                        Caption               `json:"caption"`
+	Injected                       Injected              `json:"injected"`
+	CollapseComments               bool                  `json:"collapse_comments"`
+	AdMetadata                     []AdMetadata          `json:"ad_metadata"`
+	Link                           string                `json:"link"`
+	LinkText                       string                `json:"link_text"`
+	AdAction                       string                `json:"ad_action"`
+	LinkHintText                   string                `json:"link_hint_text"`
+	ITunesItem                     interface{}           `json:"iTunesItem"`
+	AdLinkType                     int                   `json:"ad_link_type"`
+	AdHeaderStyle                  int                   `json:"ad_header_style"`
+	DrAdType                       int                   `json:"dr_ad_type"`
+	AndroidLinks                   []AndroidLinks        `json:"android_links"`
+	IabAutofillOptoutInfo          IabAutofillOptoutInfo `json:"iab_autofill_optout_info"`
+	ForceOverlay                   bool                  `json:"force_overlay"`
+	HideNuxText                    bool                  `json:"hide_nux_text"`
+	OverlayText                    string                `json:"overlay_text"`
+	OverlayTitle                   string                `json:"overlay_title"`
+	OverlaySubtitle                string                `json:"overlay_subtitle"`
+	DominantColor                  string                `json:"dominant_color"`
+	FollowerCount                  int                   `json:"follower_count"`
+	PostCount                      int                   `json:"post_count"`
+	FbPageURL                      string                `json:"fb_page_url"`
+	CanViewerSave                  bool                  `json:"can_viewer_save"`
+	OrganicTrackingToken           string                `json:"organic_tracking_token"`
+	ExpiringAt                     int                   `json:"expiring_at"`
+	Preview                        string                `json:"preview"`
+	SharingFrictionInfo            SharingFrictionInfo   `json:"sharing_friction_info"`
+	IsInProfileGrid                bool                  `json:"is_in_profile_grid"`
+	ProfileGridControlEnabled      bool                  `json:"profile_grid_control_enabled"`
+	IsShopTheLookEligible          bool                  `json:"is_shop_the_look_eligible"`
+	DeletedReason                  int                   `json:"deleted_reason"`
+	InventorySource                string                `json:"inventory_source"`
+	IsSeen                         bool                  `json:"is_seen"`
+	IsEOF                          bool                  `json:"is_eof"`
+	CommentsDisabled               bool                  `json:"comments_disabled"`
+	Comments                       []interface{}         `json:"comments"`
+}
+
+type OrganicBidInfo struct {
+	OrganicBidCpm                 float64     `json:"organicBidCpm"`
+	UserDollarValue               float64     `json:"userDollarValue"`
+	SerializedPacedOrganicBidMap  string      `json:"serializedPacedOrganicBidMap"`
+	SerializedOrganicEventProbMap string      `json:"serializedOrganicEventProbMap"`
+	SerializedEventQualityMap     string      `json:"serializedEventQualityMap"`
+	SerializedImpOrganicBidMap    string      `json:"serializedImpOrganicBidMap"`
+	SerializedImpOrganicCoeffMap  interface{} `json:"serializedImpOrganicCoeffMap"`
+	SerializedImpOrganicScoreMap  interface{} `json:"serializedImpOrganicScoreMap"`
+}
+type AdsBidInfo struct {
+	EcpmBid        float64        `json:"ecpmBid"`
+	EcpmPrice      float64        `json:"ecpmPrice"`
+	Ectr           float64        `json:"ectr"`
+	Ecvr           float64        `json:"ecvr"`
+	PostImpEcvr    int            `json:"postImpEcvr"`
+	OrganicBidInfo OrganicBidInfo `json:"organicBidInfo"`
+}
+type AdsRankingInfo struct {
+	OrganicRank  int `json:"organicRank"`
+	EcpsBidRank  int `json:"ecpsBidRank"`
+	TotalBidRank int `json:"totalBidRank"`
+}
+type AdsDebugInfo struct {
+	AdsBidInfo     AdsBidInfo     `json:"adsBidInfo"`
+	AdsRankingInfo AdsRankingInfo `json:"adsRankingInfo"`
+}
+type HideReasonsV2 struct {
+	Text   string `json:"text"`
+	Reason string `json:"reason"`
+}
+type CtdAdsInfo struct {
+	BusinessResponsivenessTimeText string      `json:"business_responsiveness_time_text"`
+	WelcomeMessageText             interface{} `json:"welcome_message_text"`
+}
+type Injected struct {
+	Label                           string          `json:"label"`
+	ShowIcon                        bool            `json:"show_icon"`
+	HideLabel                       string          `json:"hide_label"`
+	Invalidation                    interface{}     `json:"invalidation"`
+	IsDemo                          bool            `json:"is_demo"`
+	ViewTags                        []interface{}   `json:"view_tags"`
+	IsHoldout                       bool            `json:"is_holdout"`
+	TrackingToken                   string          `json:"tracking_token"`
+	ShowAdChoices                   bool            `json:"show_ad_choices"`
+	AdTitle                         string          `json:"ad_title"`
+	AboutAdParams                   string          `json:"about_ad_params"`
+	DirectShare                     bool            `json:"direct_share"`
+	AdID                            int64           `json:"ad_id"`
+	DisplayViewabilityEligible      bool            `json:"display_viewability_eligible"`
+	AdsDebugInfo                    AdsDebugInfo    `json:"ads_debug_info"`
+	ShouldShowSecondaryCtaOnProfile bool            `json:"should_show_secondary_cta_on_profile"`
+	HideReasonsV2                   []HideReasonsV2 `json:"hide_reasons_v2"`
+	HideFlowType                    int             `json:"hide_flow_type"`
+	Cookies                         []string        `json:"cookies"`
+	CtdAdsInfo                      CtdAdsInfo      `json:"ctd_ads_info"`
+}
+type AdMetadata struct {
+	Value string `json:"value"`
+	Type  int    `json:"type"`
+}
+type AndroidLinks struct {
+	LinkType                                int         `json:"linkType"`
+	WebURI                                  string      `json:"webUri"`
+	AndroidClass                            string      `json:"androidClass"`
+	Package                                 string      `json:"package"`
+	DeeplinkURI                             string      `json:"deeplinkUri"`
+	CallToActionTitle                       string      `json:"callToActionTitle"`
+	RedirectURI                             string      `json:"redirectUri"`
+	LeadGenFormID                           interface{} `json:"leadGenFormId"`
+	IgUserID                                interface{} `json:"igUserId"`
+	AppInstallObjectiveInvalidationBehavior interface{} `json:"appInstallObjectiveInvalidationBehavior"`
+}
+type IabAutofillOptoutInfo struct {
+	Domain              string `json:"domain"`
+	IsIabAutofillOptout bool   `json:"is_iab_autofill_optout"`
+}
+type EndOfFeedDemarcator struct {
+	ID       int64  `json:"id"`
+	Title    string `json:"title"`
+	Subtitle string `json:"subtitle"`
+}
+type StoriesNetego struct {
+	TrackingToken  string `json:"tracking_token"`
+	HideUnitIfSeen string `json:"hide_unit_if_seen"`
+	ClientPosition int    `json:"client_position"`
+	ID             int64  `json:"id"`
+}
+
 // FeedMedia represent a set of media items
 type FeedMedia struct {
 	inst *Instagram
@@ -810,14 +1015,17 @@ type FeedMedia struct {
 	endpoint  string
 	timestamp string
 
-	Items               []Item `json:"items"`
-	NumResults          int    `json:"num_results"`
-	MoreAvailable       bool   `json:"more_available"`
-	AutoLoadMoreEnabled bool   `json:"auto_load_more_enabled"`
-	Status              string `json:"status"`
+	Items               []Item         `json:"items"`
+	TimelineItems       []TimelineItem `json:"feed_items"`
+	NumResults          int            `json:"num_results"`
+	MoreAvailable       bool           `json:"more_available"`
+	AutoLoadMoreEnabled bool           `json:"auto_load_more_enabled"`
+	Status              string         `json:"status"`
 	// Can be int64 and string
 	// this is why we recommend Next() usage :')
 	NextID interface{} `json:"next_max_id"`
+
+	IsTimelineMedia bool
 }
 
 // Delete deletes all items in media. Take care...
@@ -943,6 +1151,7 @@ func (media *FeedMedia) Next(params ...interface{}) bool {
 				"min_timestamp":  media.timestamp,
 				"ranked_content": ranked,
 			},
+			IsPost: media.IsTimelineMedia,
 		},
 	)
 	if err == nil {
